@@ -1,0 +1,37 @@
+  <h3>User Information</h3>
+
+  <label>User name</label>
+
+  <input
+    type="text"
+    class="form-control"
+    [(ngModel)]="userName"
+  >
+  <!--  [disabled]="!isEmptyUserName"-->
+
+  <button
+    class="btn btn-primary"
+    (click)="onCreateUser()"
+    [disabled]="userName === ''"
+  >
+    Add User
+  </button>
+
+  <button
+    class="btn btn-primary"
+    (click)="onResetUserNameInput()"
+    [disabled]="userName === ''"
+  >
+    Clear user input
+  </button>
+
+<!--  Это деректива позволяющая рендерить что либо если условие true-->
+  <p *ngIf="!isEmptyUserName">{{userName}}</p>
+
+<!--  Можно реализовать конструкцию if else-->
+  <p *ngIf="!isEmptyUserName; else noUserName">{{userName}}</p>
+  <ng-template #noUserName>
+    <p>User not created</p>
+  </ng-template>
+
+  <app-password></app-password>

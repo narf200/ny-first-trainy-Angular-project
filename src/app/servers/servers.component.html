@@ -1,0 +1,33 @@
+  <h3>SERVERS</h3>
+<label>Server name</label>
+<!--  <input-->
+<!--    type="text"-->
+<!--    class="form-control"-->
+<!--    (input)="onUpdateServerName($event)"-->
+<!--  >-->
+<!-- Двойная привязка данных инпута делается через [(ngModel)]="serverName"-->
+
+  <input
+    type="text"
+    class="form-control"
+    [(ngModel)]="serverName"
+  >
+
+  <button
+    class="btn btn-primary"
+    [disabled]="!allowNewServer"
+    (click)="onCreateServer()">
+    Add Server
+  </button>
+  <button
+    class="btn btn-secondary"
+    [disabled]="allowNewServer"
+  >
+    Remove Server
+  </button>
+
+  <p>{{serverCreationStatus}}</p>
+  <p>{{allowNewServer}}</p>
+
+  <app-server *ngFor="let server of servers"></app-server>
+
